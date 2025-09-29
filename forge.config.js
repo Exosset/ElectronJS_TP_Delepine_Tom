@@ -47,7 +47,7 @@ module.exports = {
       config: {
         repository: {
           owner: "Exosset",
-          name: "ElectronJSSDemo"
+          name: "ElectronJS_TP_Delepine_Tom"
         },
         prerelease: false,
         draft: true
