@@ -1,4 +1,6 @@
-import log from 'electron-log/renderer'
+import { errorGetItems, errorServer } from '../logs/error'
+import { infoGetJSON } from '../logs/info'
+import { warnNothingItem } from '../logs/warn'
 
 export async function getArticles() {
   try {
@@ -7,18 +9,18 @@ export async function getArticles() {
       headers: { "Content-Type": "application/json" },
     })
     if (!res.ok) {
-      throw new Error(`Erreur serveur: ${res.status}`)
+      errorServer(res)
     }
     const articles = await res.json()
     if (Array.isArray(articles.data) && articles.data.length > 0) {
-      log.info("Le JSON a été récupéré :", articles)
+      infoGetJSON(articles)
       return articles.data
     } else {
-      log.warn("Aucun article trouvé")
+      warnNothingItem()
       return []
     }
   } catch (err) {
-    log.error("Erreur lors de la récupération des articles :", err)
+    errorGetItems(err)
     return []
   }
 }

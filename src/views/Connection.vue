@@ -1,9 +1,12 @@
 <template>
     <ul uk-tab>
-    <li class="uk-active">
-      <router-link to="/">Connection</router-link>
+    <li>
+        Connection
     </li>
-  </ul>
+    <li>
+        <router-link to="/inscription">Inscription</router-link>
+    </li>
+    </ul>
   <body class="uk-flex uk-flex-center uk-flex-middle uk-background-muted uk-height-viewport" style="min-height: 100vh;">
     <div class="uk-width-medium uk-padding-small">
       <!-- login -->
@@ -30,7 +33,7 @@
           </div>
 
           <div class="uk-margin-bottom">
-            <button type="submit" class="uk-button uk-button-primary uk-border-pill uk-width-1-1">LOG IN</button>
+            <button type="submit" class="uk-button uk-button-primary uk-border-pill uk-width-1-1">Se connecter</button>
           </div>
         </fieldset>
       </form>
@@ -45,6 +48,7 @@ import { ref } from 'vue'
 import log from 'electron-log/renderer'
 import { setAuth } from '../auth/auth'
 import router from '../router/index'
+import { infoAuthSend, infoRememberActivated } from '../logs/info'
 
 // état local du formulaire
 const email = ref("")
@@ -54,16 +58,14 @@ const remember = ref(false)
 async function sendAuth() {
   const user = await setAuth(email.value, password.value)
 
-  log.info("Auth envoyé :", user)
+  infoAuthSend(user)
 
     if (user.code === '200') {
-        router.push({ name: "ItemsList" }) // 👈 marche aussi avec le nom de la route
+        router.push({ name: "ItemsList" })
     }
-  // ici tu pourrais envoyer au main process Electron
-  // window.electronAPI?.sendLogin(user)
 
   if (remember.value) {
-    log.info("Option remember activée ✅")
+    infoRememberActivated()
   }
 }
 </script>
