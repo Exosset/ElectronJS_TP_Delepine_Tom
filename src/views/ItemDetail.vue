@@ -28,8 +28,8 @@
 <script setup>
 import { ref, onMounted } from "vue"
 import { getArticleDetails } from "../services/Details"
-import { errorLoadingDetails } from "../logs/error"
-import { infoGetArticle } from "../logs/info"
+import { errorLoadingDetails } from "../logsInfo/error"
+import { infoGetArticle } from "../logsInfo/info"
 
 // props transmises via route (props: true)
 const props = defineProps(["id"])

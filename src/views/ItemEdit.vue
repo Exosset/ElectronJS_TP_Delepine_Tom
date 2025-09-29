@@ -46,8 +46,8 @@
 import { ref, onMounted } from "vue"
 import { getArticleDetails, editArticleDetails } from "../services/Details"
 import router from '../router/index'
-import { errorLoadingDetails, errorSaveItem } from "../logs/error"
-import { infoGetArticle } from "../logs/info"
+import { errorLoadingDetails, errorSaveItem } from "../logsInfo/error"
+import { infoGetArticle } from "../logsInfo/info"
 
 // props transmises via la route
 const props = defineProps(["id"])

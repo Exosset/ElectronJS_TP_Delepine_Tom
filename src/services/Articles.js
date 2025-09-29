@@ -1,6 +1,6 @@
-import { errorGetItems, errorServer } from '../logs/error'
-import { infoGetJSON } from '../logs/info'
-import { warnNothingItem } from '../logs/warn'
+import { errorGetItems, errorServer } from '../logsInfo/error'
+import { infoGetJSON } from '../logsInfo/info'
+import { warnNothingItem } from '../logsInfo/warn'
 
 export async function getArticles() {
   try {

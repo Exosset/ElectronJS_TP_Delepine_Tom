@@ -50,9 +50,9 @@
 import { ref, onMounted } from 'vue'
 import log from 'electron-log/renderer'
 import {getArticles} from '../services/Articles'
-import { errorGetItems } from '../logs/error'
-import { warnNothingItem } from '../logs/warn'
-import { infoGetArticles } from '../logs/info'
+import { errorGetItems } from '../logsInfo/error'
+import { warnNothingItem } from '../logsInfo/warn'
+import { infoGetArticles } from '../logsInfo/info'
 
 const lesArticles = ref([])
 

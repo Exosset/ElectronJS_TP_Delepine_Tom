@@ -74,9 +74,9 @@
 import { ref } from 'vue'
 import { addAuth } from '../auth/auth'
 import router from '../router/index'
-import { errorUserCreate } from '../logs/error'
-import { warnServerUser } from '../logs/warn'
-import { infoAuthCreate } from '../logs/info'
+import { errorUserCreate } from '../logsInfo/error'
+import { warnServerUser } from '../logsInfo/warn'
+import { infoAuthCreate } from '../logsInfo/info'
 
 // état local du formulaire
 const email = ref("")

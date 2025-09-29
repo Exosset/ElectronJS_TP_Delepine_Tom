@@ -42,8 +42,8 @@
 import { ref, onMounted} from "vue"
 import { useRouter } from "vue-router"
 import { getArticleDetails, deleteArticleById } from "../services/Details"
-import { errorDeleteItem } from "../logs/error"
-import { infoDeleteItem } from "../logs/info"
+import { errorDeleteItem } from "../logsInfo/error"
+import { infoDeleteItem } from "../logsInfo/info"
 import UIkit from "uikit" // 👈 pour manipuler la modal
 
 const props = defineProps(["id"])

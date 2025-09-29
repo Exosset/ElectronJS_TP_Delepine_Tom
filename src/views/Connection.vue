@@ -48,7 +48,7 @@ import { ref } from 'vue'
 import log from 'electron-log/renderer'
 import { setAuth } from '../auth/auth'
 import router from '../router/index'
-import { infoAuthSend, infoRememberActivated } from '../logs/info'
+import { infoAuthSend, infoRememberActivated } from '../logsInfo/info'
 
 // état local du formulaire
 const email = ref("")

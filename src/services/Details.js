@@ -1,6 +1,6 @@
-import { errorDeleteItem, errorGetItem, errorSaveItem, errorServer } from '../logs/error'
-import { warnNothingItem, warnDelete } from '../logs/warn'
-import { infoDeleteItem, infoGetArticle, infoSaveItem } from '../logs/info'
+import { errorDeleteItem, errorGetItem, errorSaveItem, errorServer } from '../logsInfo/error'
+import { warnNothingItem, warnDelete } from '../logsInfo/warn'
+import { infoDeleteItem, infoGetArticle, infoSaveItem } from '../logsInfo/info'
 
 export async function getArticleDetails(id) {
   try {
