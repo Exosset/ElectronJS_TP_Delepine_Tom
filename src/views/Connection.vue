@@ -1,46 +1,69 @@
 <template>
-    <form>
-        <input class="uk-input" type="text">
-        <select class="uk-select">
-            <option>Test 1</option>
-            <option>Test 2</option>
-        </select>
-        <textarea class="uk-textarea"></textarea>
-        <input class="uk-radio" type="radio">
-        <input class="uk-checkbox" type="checkbox">
-        <input class="uk-range" type="range">
-    </form>
+    <ul uk-tab>
+    <li class="uk-active">
+      <router-link to="/">Connection</router-link>
+    </li>
+  </ul>
+  <body class="uk-flex uk-flex-center uk-flex-middle uk-background-muted uk-height-viewport" style="min-height: 100vh;">
+    <div class="uk-width-medium uk-padding-small">
+      <!-- login -->
+      <form class="toggle-class" @submit.prevent="sendAuth">
+        <fieldset class="uk-fieldset">
+          <div class="uk-margin-small">
+            <div class="uk-inline uk-width-1-1">
+              <span class="uk-form-icon uk-form-icon-flip" data-uk-icon="user"></span>
+              <input v-model="email" class="uk-input uk-border-pill" required placeholder="Username" type="text">
+            </div>
+          </div>
 
+          <div class="uk-margin-small">
+            <div class="uk-inline uk-width-1-1">
+              <span class="uk-form-icon uk-form-icon-flip" data-uk-icon="lock"></span>
+              <input v-model="password" class="uk-input uk-border-pill" required placeholder="Password" type="password">
+            </div>
+          </div>
+
+          <div class="uk-margin-small">
+            <label>
+              <input v-model="remember" class="uk-checkbox" type="checkbox"> Keep me logged in
+            </label>
+          </div>
+
+          <div class="uk-margin-bottom">
+            <button type="submit" class="uk-button uk-button-primary uk-border-pill uk-width-1-1">LOG IN</button>
+          </div>
+        </fieldset>
+      </form>
+      <!-- /login -->
+    </div>
+  </body>
 </template>
 
+
 <script setup>
+import { ref } from 'vue'
+import log from 'electron-log/renderer'
+import { setAuth } from '../auth/auth'
+import router from '../router/index'
 
-import { ref } from 'vue';
-import log from 'electron-log/renderer';
+// état local du formulaire
+const email = ref("")
+const password = ref("")
+const remember = ref(false)
 
-const movies = ref([]);
+async function sendAuth() {
+  const user = await setAuth(email.value, password.value)
 
-async function callApi() {
-    // TODO : Afficher chargement
+  log.info("Auth envoyé :", user)
 
-    //appeler l'API
-
-
-    const res = await fetch('https://raw.githubusercontent.com/Chocolaterie/EniWebService/main/api/movies.json');
-
-    const data = await res.json();
-
-    if (data.length != 0) {
-        movies.value = data
-        log.info('Le JSON a été récupéré');
-    } else {
-        log.error('Le JSON a pas été récupéré');
+    if (user.code === '200') {
+        router.push({ name: "ItemsList" }) // 👈 marche aussi avec le nom de la route
     }
+  // ici tu pourrais envoyer au main process Electron
+  // window.electronAPI?.sendLogin(user)
 
-
-    //Récupérer le JSON
-
-    // TODO : Fermer le chargement
+  if (remember.value) {
+    log.info("Option remember activée ✅")
+  }
 }
-
 </script>

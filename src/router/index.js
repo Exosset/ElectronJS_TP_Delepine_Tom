@@ -1,10 +1,10 @@
 import { createRouter, createWebHashHistory } from 'vue-router';
-import PageOne from "../views/PageOne.vue";
-import PageTwo from "../views/PageTwo.vue";
+import Connection from "../views/Connection.vue";
+import ItemsList from "../views/ItemsList.vue";
 
 const routes = [
-    { path: '/', name: 'PageOne', component: PageOne },
-    { path: '/page-2', name: 'PageTwo', component: PageTwo }
+    { path: '/', name: 'Connection', component: Connection },
+    { path: '/items', name: 'ItemsList', component: ItemsList }
 ];
 
 const router = createRouter({
