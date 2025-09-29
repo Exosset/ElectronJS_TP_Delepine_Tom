@@ -1,7 +1,7 @@
 <template>
     <ul uk-tab>
     <li>
-        Connection
+        Connexion
     </li>
     <li>
         <router-link to="/inscription">Inscription</router-link>
