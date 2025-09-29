@@ -1,21 +1,21 @@
 <template>
     <form>
-    <input class="uk-input" type="text">
-    <select class="uk-select">
-        <option>Test 1</option>
-        <option>Test 2</option>
-    </select>
-    <textarea class="uk-textarea"></textarea>
-    <input class="uk-radio" type="radio">
-    <input class="uk-checkbox" type="checkbox">
-    <input class="uk-range" type="range">
-</form>
+        <input class="uk-input" type="text">
+        <select class="uk-select">
+            <option>Test 1</option>
+            <option>Test 2</option>
+        </select>
+        <textarea class="uk-textarea"></textarea>
+        <input class="uk-radio" type="radio">
+        <input class="uk-checkbox" type="checkbox">
+        <input class="uk-range" type="range">
+    </form>
 
 </template>
 
 <script setup>
 
-import {ref} from 'vue';
+import { ref } from 'vue';
 import log from 'electron-log/renderer';
 
 const movies = ref([]);
@@ -33,7 +33,7 @@ async function callApi() {
     if (data.length != 0) {
         movies.value = data
         log.info('Le JSON a été récupéré');
-    }else {
+    } else {
         log.error('Le JSON a pas été récupéré');
     }
 

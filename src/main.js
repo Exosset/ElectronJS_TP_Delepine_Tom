@@ -1,10 +1,13 @@
-import { app, BrowserWindow } from 'electron';
+﻿import { app, BrowserWindow } from 'electron';
 import path from 'node:path';
 import started from 'electron-squirrel-startup';
-const log = require('electron-log');
 
-// IMORTANT ! Pour activer le logger dans le processus de rendu (cotés front)
+// LOGGER
+import log from 'electron-log';
+
+// IMPORTANT ! Pour activer le logger dans le processus de rendu (cotés front)
 log.initialize();
+
 log.info('Application démarrée');
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
